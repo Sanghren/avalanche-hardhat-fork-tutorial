@@ -27,9 +27,6 @@ I've put a [bunch more links](#some-links) at the bottom if you are interested t
 
 ### Hardhat ?
 
-TODO IMPROVE DESCRIPTION HERE
-
-
 Hardhat is an **Ethereum development environment for professionals.** . It was developed for Ethereum, but since
 lots of other blockchains reuse the EVM you can apply Hardhat on those as well ! 
 
