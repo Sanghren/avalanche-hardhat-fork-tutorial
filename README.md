@@ -101,10 +101,13 @@ interface IERC20 {
 
 }
 
+/**
+* I would not recommend you to use this code as it is. It is really simple and stripped of some basic security checks.
+*/
 contract Swapper {
-
-    address private wavax;
-    address private router;
+  
+    address private wavax; // Address of the ERC20 Wrapped Avax
+    address private router; // Address of the 'Uniswap-like' router contract
 
     constructor(address _wavax_address, address _router){
         wavax = _wavax_address;
@@ -112,7 +115,7 @@ contract Swapper {
     }
 
     /**
-    * This function will take perform a swap on Pangolin, given a pair (must be a wavax - token X) pair .
+    * This function will perform a swap on Pangolin. The pair must be a WAVAX-ERC20 pair.
     * @param amountOutMin Minimum amount of token that we want to get after our swap.
     * @param path Array of tokens' address
     * @param pair Address of the liquidity pair we will use in this swap
