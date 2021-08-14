@@ -1,7 +1,8 @@
 ## Introduction
 
-In this tutorial we will cover the use of hardhat, a powerful EVM development tool and how to use it to test contract deployed on 
-Avalanche's C-Chain. More specifically, we will cover how to configure and use the hardhat `fork` mechanism.
+In this tutorial we will cover the use of hardhat, a powerful EVM development tool.
+More specifically, we will cover how to configure it to work with Avalanche CChain and ho to use the hardhat `fork`
+mechanism to test your DeFi Dapp.
 
 If you want to jump right into the code, here's a [link](https://github.com/tbrunain/avalanche-hardhat-fork-tutorial) 
 to the github repo containing the code of this tutorial.
