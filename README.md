@@ -68,8 +68,8 @@ If you want to test your Swapper `swap` function you then need to set up in your
 linking all this
   together. Doable but it'll require some time to set up all this properly.
 
-So, what if I told you that we could avoid all those steps above and jump directly to the step where you test the
-relevant function of your contract.
+So, what if I told you that we could avoid all of this and jump directly to the step where you create tests for your 
+smart contracts.
 
 That's where 'Hardhat fork' is coming in handy.
 
