@@ -23,7 +23,7 @@ If you want to know more about it, I recommend you those links:
 - https://docs.avax.network/
 - https://github.com/ava-labs/avalanche-smart-contract-quickstart
 
-I've put a [bunch more links](#some-links) at the bottom if you are interested to learn more and join the awesome
+I've put a [bunch more links](#additional-links) at the bottom if you are interested to learn more and join the awesome
 Avalanche community !
 
 ### Hardhat ?
@@ -368,11 +368,11 @@ Couple of things to note here :
 - `await ethers.provider.send(
   "hardhat_reset", ...` It will reset the state of your CChain fork. Meaning that each one of your test will run on a 
    clean instance.
-- `let accounts = await ethers.getSigners()` , ethers here provide us a way to get access to some accounts that we can
-  use in our tests.
-- `const swapperFactory = await ethers.getContractFactory("Swapper")` Ethers provide here a ContractFactory that is an
+- `let accounts = await ethers.getSigners()` Ethers provides us a way to get access to some ``Signers`. Which is a 
+   way to represent CChain account that we can use in our tests.
+- `const swapperFactory = await ethers.getContractFactory("Swapper")` We get here via Ethers a ContractFactory that is an
   abstraction used to deploy smart contracts.
-- `swapper = await swapperFactory.deploy(process.env.WAVAX_ADDRES as string, "0xE54Ca86531e17Ef3616d22Ca28b0D458b6C89106");`
+- `swapper = await swapperFactory.deploy(process.env.WAVAX_ADDRES as string, "0x....");`
   Here we use the factory to actually deploy the contract on the hardhat network, which is a forked version of cchain
   mainnet ! The resulting `swapper` is an object (fully typed thanks to typechain) that represent the `Swapper` conract,
   and on which you will be able to call functions, like the `swap` one !
@@ -484,7 +484,7 @@ If you want to see the code in action, you should run this command in the termin
 This should produce an output looking like this:
 ![img.png](img.png)
 
-Yeay ! We successfully tested our contract !
+Yeay ! We successfully tested our contract using a fork of the Avalanche's CChain mainnet.
 
 ## Bonus
 
@@ -552,7 +552,10 @@ In this tutorial learned how to set up our Hardhat environment to use a fork of 
 for our tests, If you want to learn more about Hardhat, I can't recommend you enough to have a look at their
 [official documentation](https://hardhat.org/getting-started/)
 
-# Some Links
+I hope you learned something with this tutorial, let me know if you spot a mistake, typo ... 
+Also if you would like to have another tutorial on how to use X with Avalanche, let me know !
+
+# Additional links
 
 If you want to know more about avalanche, here's a bunch of links for you:
 
