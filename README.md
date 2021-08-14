@@ -7,7 +7,7 @@ mechanism to test your DeFi Dapp.
 If you want to jump right into the code, here's a [link](https://github.com/tbrunain/avalanche-hardhat-fork-tutorial) 
 to the github repo containing the code of this tutorial.
 
-## Avalanche
+### Avalanche
 
 Avalanche is a platform for creating custom blockchain networks and decentralized applications (dApps). Created by Ava 
 Labs, the Avalanche crypto platform is one of many projects seeking to unseat Ethereum as the blockchain ecosystem's 
@@ -27,7 +27,7 @@ If you want to know more about it, I recommend you those links:
 
 I've put a [bunch more links](#some-links) at the bottom if you are interested to learn more and join the awesome Avalanche community !
 
-## Hardhat ?
+### Hardhat ?
 
 TODO IMPROVE DESCRIPTION HERE
 
