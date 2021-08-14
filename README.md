@@ -137,7 +137,7 @@ have to mock/recreate this router and all the contracts that this router use ...
 
 Thanks to Hardhat, we can make our life easier and skip it altogether.
 
-First we need to configure Hardhat. If you look in `Hardhat.config.ts` you'll see this :
+First we need to configure Hardhat. If you look in `hardhat.config.ts` you'll see this :
 
 ```ts
 const config: HardhatUserConfig = {
