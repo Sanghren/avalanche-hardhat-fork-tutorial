@@ -217,13 +217,11 @@ If you want to see all configurations options, please go check the [official doc
 So we went over the Solidity code, the Hardhat configuration. Now let's have a look at how to create a test using
 Hardhat.
 
-
-
 Now let's have a look at the test code.
 
-Testing with Hardhat is fairly simple, lots of things are abstracted away. It's a real joy to use.
+Testing with Hardhat is fairly simple, lots of things are abstracted away. 
 
-Let's first have a look at the test I've written for our Swapper contract :
+Let's first have a first look at the test I've written for our Swapper contract, no worries we will dissect it a bit later.
 
 ```ts
 import { ethers } from "hardhat";
@@ -283,6 +281,7 @@ describe("Swappity swap", function () {
         const wavaxBalanceAfter = await wavaxTokenContract.balanceOf(account1.address);
         const pngBalanceAfter = await pngTokenContract.balanceOf(account1.address)
 
+        // Since we have done the swap, we expect the balance to be slightly different now. Less Wavax and more Png.
         expect(wavaxBalanceBefore).lt(wavaxBalanceAfter);
         expect(pngBalanceBefore).gt(pngBalanceAfter);
     });
@@ -290,7 +289,7 @@ describe("Swappity swap", function () {
 
 ```
 
-First we have all the imports:
+First we have all the imports. 
 
 ```ts
 import { ethers } from "hardhat";
@@ -302,8 +301,10 @@ import { Swapper, IWAVAX } from "../typechain";
 dotenv.config();
 ```
 
-I won't go over in details about those, just notice that we use `typechain`, which is a tool that create types from
-solidity contract.
+I won't go over in details about those, just notice that we use `typechain`, which is a tool that generate automatically
+typescript bindings for Smart contracts.
+Basically it means that, when we instantiate an object corresponding to a Solidity contract, we will have full typings, auto completion.
+It will save you a lot of time and help you write better code.
 
 In the snippet below we can see the `beforeEach` function that will run before each test case we write in this file.
 
