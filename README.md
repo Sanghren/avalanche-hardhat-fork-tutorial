@@ -51,13 +51,14 @@ Let's say you have a simple contract `Swapper.sol` that you want to use to make 
 The flow of it would be:
 
 ```
-Your send a call to Swapper's swap function -> Swapper use Pangolin router `swapExactTokensForTokens` function
--> Pangolin router call a Pair contract to make the swap
+1- Your send a call to Swapper's swap function 
+2- Swapper use Pangolin router `swapExactTokensForTokens` function
+3- Pangolin router call a Pair contract to make the swap
 ```
 
 Notice how it requires calls to external contracts.
 
-If you want to test your Swapper 'swap' function you then need to set up in your test environment :
+If you want to test your Swapper `swap` function you then need to set up in your test environment :
 
 - 2 Token contracts to use in a pair contract
 - Pangolin Factory
