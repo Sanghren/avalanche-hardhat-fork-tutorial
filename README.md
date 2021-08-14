@@ -69,10 +69,11 @@ linking all this
 So, what if I told you that we could avoid all those steps above and jump directly to the step where you test the
 relevant function of your contract.
 
-That's where 'Hardhat fork' functionality is coming in handy. Let me explain it to you.
+That's where 'Hardhat fork' is coming in handy.
 
-With this fork functionality, you can simply make a copy of the state of an EVM chain (in our case the CChain) and use
-this copy directly in your tests !
+With this you can simply make a copy of the state of an EVM chain (in our case the CChain) and use
+this copy directly in your tests ! That means that you'll e able to work with an exact copy of the CChain. With all contract,
+addresses balance...
 
 So in our case we would not have to deploy all the relevant Pangolin's contract, we could just use the one deployed on
 the mainnet.
