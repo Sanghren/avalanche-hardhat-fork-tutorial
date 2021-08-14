@@ -1,7 +1,7 @@
 ## Introduction
 
-In this tutorial we will cover the use of hardhat, a powerful EVM development tool.
-More specifically, we will cover how to configure it to work with Avalanche CChain and ho to use the hardhat `fork`
+In this tutorial we will cover the use of Hardhat, a powerful EVM development tool.
+More specifically, we will cover how to configure it to work with Avalanche CChain and how to use the Hardhat `fork`
 mechanism to test your DeFi Dapp.
 
 If you want to jump right into the code, here's a [link](https://github.com/tbrunain/avalanche-hardhat-fork-tutorial) 
@@ -33,7 +33,7 @@ TODO IMPROVE DESCRIPTION HERE
 
 
 Hardhat is an **Ethereum development environment for professionals.** . It was developed for Ethereum, but since
-lots of other blockchains reuse the EVM you can apply hardhat on those as well ! 
+lots of other blockchains reuse the EVM you can apply Hardhat on those as well ! 
 
 In short, it helps you in all
 the important steps of smart contract development. From compiling and deploying your smart contract, to testing and even
@@ -47,7 +47,7 @@ more :
 
 ### Hardhat Fork ?
 
-So let's get back to the core of this tutorial : hardhat fork mechanism.
+So let's get back to the core of this tutorial : Hardhat fork mechanism.
 
 In order to make you realize the importance of this functionality, let me give you an example:
 
@@ -74,7 +74,7 @@ linking all this
 So, what if I told you that we could avoid all those steps above and jump directly to the step where you test the
 relevant function of your contract.
 
-That's where 'hardhat fork' functionality is coming in handy. Let me explain it to you.
+That's where 'Hardhat fork' functionality is coming in handy. Let me explain it to you.
 
 With this fork functionality, you can simply make a copy of the state of an EVM chain (in our case the CChain) and use
 this copy directly in your tests !
@@ -132,9 +132,9 @@ contract Swapper {
 As you can see we use some external contract (Pangolin router). Meaning that if you want to test this code... you'll
 have to mock/recreate this router and all the contracts that this router use ... Kinda annoying right ?
 
-Thanks to hardhat, we can make our life easier and skip it altogether.
+Thanks to Hardhat, we can make our life easier and skip it altogether.
 
-First we need to configure hardhat. If you look in `hardhat.config.ts` you'll see this :
+First we need to configure Hardhat. If you look in `Hardhat.config.ts` you'll see this :
 
 ```ts
 const config: HardhatUserConfig = {
@@ -191,17 +191,17 @@ hardhat: {
 - `forking` is where you configure the parameter of the fork. 
   - `url` here we see that we point to the Ava labs api endpoint
     (but this could be your local node, as long as it is running as full archive node) and
-    hardhat will take care of getting the state of the cchain and start a local development network on which you'll be be
+    Hardhat will take care of getting the state of the cchain and start a local development network on which you'll be be
     able to deploy, test your code.
-  - `blockNumber` Specify at which block hardhat will create a fork. It is super useful since the default behaviour of
+  - `blockNumber` Specify at which block Hardhat will create a fork. It is super useful since the default behaviour of
     this fork mechanism is to take the latest block known by the node you use. Since you want to be able to run your
     test in a deterministic manner, it's better to use this functionality. Beware that you will need a node that keeps
     the whole chain history in order to use this.
 
 If you want to see all configurations options, please go check the [official documentation](https://hardhat.org/hardhat-network/reference/) for this feature.
 
-So we went over the solidity code, the hardhat configuration. Now let's have a look at how to create a test using
-hardhat.
+So we went over the solidity code, the Hardhat configuration. Now let's have a look at how to create a test using
+Hardhat.
 
 Note that you can put mutliple network definition, one of it is considered as the 'default' one. Meaning that when using
 `npx hardhat test` command, for example, it'll by default use the `hardhat` network. If you want to run the test on
@@ -210,7 +210,7 @@ another network than the default, you can use this variation of the command :
 
 Now let's have a look at the test code.
 
-Testing with hardhat is fairly simple, lots of things are abstracted away. It's a real joy to use.
+Testing with Hardhat is fairly simple, lots of things are abstracted away. It's a real joy to use.
 
 Let's first have a look at the test I've written for our Swapper contract :
 
@@ -457,7 +457,7 @@ await network.provider.send("evm_mine");
 
 ### Impersonation
 
-There is another hardhat's feature that is quite useful: the `impersonation`. With this feature, you can invoke contract
+There is another Hardhat's feature that is quite useful: the `impersonation`. With this feature, you can invoke contract
 call as if you were someone else, like the owner of a contract that is already deployed for example.
 
 In the snippet below we want to call the function `setCoverageAmount` from the elkIlpStrategyV5. Which is only callable by the
@@ -495,9 +495,9 @@ const stakingcontract = await ethers.getContractAt('IStakingRewardsILPV2', elpSt
 
 ## Conclusion
 
-In this tutorial learned how to set up our hardhat environment to use a fork of avalanche's Cchain and use it as a base 
+In this tutorial learned how to set up our Hardhat environment to use a fork of avalanche's Cchain and use it as a base 
 for our tests,
-If you want to learn more about hardhat, I can't recommend you enough to have a look at their 
+If you want to learn more about Hardhat, I can't recommend you enough to have a look at their 
 [official documentation](https://hardhat.org/getting-started/)
 
 # Some Links
