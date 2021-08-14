@@ -35,7 +35,7 @@ the important steps of smart contract development. From compiling, deploying, an
 even a functionality to let you use 'console.log' in your smart contract's code!
 
 It's not the purpose of this tutorial to go over all those functionalities (maybe in another tutorial, why not :) ), so here is a few links if you want to know
-more :
+more about it:
 
 - https://hardhat.org/getting-started/
 - https://github.com/nomiclabs/hardhat
