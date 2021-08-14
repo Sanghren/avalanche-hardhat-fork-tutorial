@@ -1,6 +1,6 @@
 ## Introduction
 
-In this tutorial we will cover the use of Hardhat, a powerful EVM development tool.
+In this tutorial we will cover the use of Hardhat, a powerful EVM development tool, together with Avalanche.
 More specifically, we will cover how to configure it to work with Avalanche CChain and how to use the Hardhat `fork`
 mechanism to test your DeFi Dapp.
 
