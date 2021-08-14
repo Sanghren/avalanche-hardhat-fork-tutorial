@@ -54,8 +54,8 @@ The flow of it would be:
 
 ```
 1- Your send a call to Swapper's swap function 
-2- Swapper use Pangolin router `swapExactTokensForTokens` function
-3- DEX router call a Pair contract to make the swap
+2- Swapper use Pangolin's router `swapExactTokensForTokens` function, it will find the appropriate Pair contract address to call
+3- Pangolin's router call a Pair contract to make the swap
 ```
 
 Notice how it requires calls to external contracts.
