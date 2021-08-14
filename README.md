@@ -60,10 +60,11 @@ Notice how it requires calls to external contracts.
 
 If you want to test your Swapper `swap` function you then need to set up in your test environment :
 
-- 2 Token contracts to use in a pair contract
+- 2 ERC20 contracts
 - Pangolin Factory
 - Pangolin router's contract
-- A Pair contract (PGL) using your 2 previously created contract And all this with the appropriate constructor params, 
+- A Pair contract (PGL) using your 2 previously created ERC20.
+- And all this with the appropriate constructor params, 
 linking all this
   together. Doable but since one of our most precious resource is time...
 
