@@ -178,6 +178,11 @@ use with your project. As you can see above we have defined two networks for thi
 - `hardhat`, which is also the `defaultNetwork`.
 - `fuji`, which is pointing to fuji testnet.
 
+Note that you can put mutliple network definition, one of it is considered as the 'default' one. Meaning that when you are using
+`npx hardhat test`, it'll use the default network. If you want to run the test on
+another network than the default, you can use this variation of the command :
+`npx hardhat test --network fuji`
+
 Now let's focus on the `hardhat` one .
 
 ```ts
@@ -212,10 +217,7 @@ If you want to see all configurations options, please go check the [official doc
 So we went over the Solidity code, the Hardhat configuration. Now let's have a look at how to create a test using
 Hardhat.
 
-Note that you can put mutliple network definition, one of it is considered as the 'default' one. Meaning that when using
-`npx hardhat test` command, for example, it'll by default use the `hardhat` network. If you want to run the test on
-another network than the default, you can use this variation of the command :
-`npx hardhat test --network fuji`
+
 
 Now let's have a look at the test code.
 
