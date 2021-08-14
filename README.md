@@ -46,14 +46,16 @@ So let's get back to the core of this tutorial : Hardhat fork mechanism.
 
 In order to make you realize the importance of this functionality, let me give you an example:
 
-Let's say you have a simple contract `Swapper.sol` that you want to use to make a swap on Pangolin.
+Let's say you have a simple contract `Swapper.sol`. It has a function `swap` that once called with the appropriate 
+parameters will swap for you some Wavax tokens into another ERC20 tokens listed on a DEX. For the sake of this tutorial we will 
+use [Pangolin](https://pangolin.exchange/)
 
 The flow of it would be:
 
 ```
 1- Your send a call to Swapper's swap function 
 2- Swapper use Pangolin router `swapExactTokensForTokens` function
-3- Pangolin router call a Pair contract to make the swap
+3- DEX router call a Pair contract to make the swap
 ```
 
 Notice how it requires calls to external contracts.
