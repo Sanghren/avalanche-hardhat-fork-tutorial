@@ -84,6 +84,8 @@ the mainnet and test your smart contract without much hassle.
 
 ## Step by step explanation
 
+### Smart contract overview
+
 So first let's get over quickly the solidity code that we will use:
 
 ```solidity
@@ -132,6 +134,8 @@ contract Swapper {
 }
 ```
 
+### Hardhat configuration
+
 As you can see we use some external contract (Pangolin router). Meaning that if you want to test this code... you'll
 have to mock/recreate this router and all the contracts that this router use ... Kinda annoying right ?
 
@@ -169,7 +173,7 @@ const config: HardhatUserConfig = {
 ```
 
 The most interesting portion of code here is the `network` part. That's where you configure networks that you want to
-use with your project. As you can see above we have defined two network for this tutorial :
+use with your project. As you can see above we have defined two networks for this tutorial:
 
 - `hardhat`, which is also the `defaultNetwork`.
 - `fuji`, which is pointing to fuji testnet.
@@ -193,17 +197,19 @@ hardhat: {
 - `gasPrice` is -currently- a fixed value on avalanche and set at 225 nAVAX, stay tuned for the next release and dynamic fees introduction.
 - `forking` is where you configure the parameter of the fork. 
   - `url` here we see that we point to the Ava labs api endpoint
-    (but this could be your local node, as long as it is running as full archive node) and
-    Hardhat will take care of getting the state of the cchain and start a local development network on which you'll be be
-    able to deploy, test your code.
-  - `blockNumber` Specify at which block Hardhat will create a fork. It is super useful since the default behaviour of
-    this fork mechanism is to take the latest block known by the node you use. Since you want to be able to run your
-    test in a deterministic manner, it's better to use this functionality. Beware that you will need a node that keeps
-    the whole chain history in order to use this.
+    This could be your local node, as long as it is running as full archive node.
+    Hardhat will take care of getting the state of the CChain from this node and start a local development network 
+    on which you'll be able to deploy and test your code.
+  - `blockNumber` Specify at which block Hardhat will create a fork. It is optional so if you don't set it, the default behaviour would be to
+    fork the CChain at the latest known block.
+    Now since you want to be able to run your
+    tests in a deterministic manner, I recommend you to specify a specific block number.
 
 If you want to see all configurations options, please go check the [official documentation](https://hardhat.org/hardhat-network/reference/) for this feature.
 
-So we went over the solidity code, the Hardhat configuration. Now let's have a look at how to create a test using
+### Tests overview
+
+So we went over the Solidity code, the Hardhat configuration. Now let's have a look at how to create a test using
 Hardhat.
 
 Note that you can put mutliple network definition, one of it is considered as the 'default' one. Meaning that when using
