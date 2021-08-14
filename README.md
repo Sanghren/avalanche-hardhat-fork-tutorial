@@ -365,6 +365,9 @@ describe("Swappity swap", function () {
 
 Couple of things to note here :
 
+- `await ethers.provider.send(
+  "hardhat_reset", ...` It will reset the state of your CChain fork. Meaning that each one of your test will run on a 
+   clean instance.
 - `let accounts = await ethers.getSigners()` , ethers here provide us a way to get access to some accounts that we can
   use in our tests.
 - `const swapperFactory = await ethers.getContractFactory("Swapper")` Ethers provide here a ContractFactory that is an
