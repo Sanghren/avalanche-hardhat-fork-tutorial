@@ -330,7 +330,8 @@ Solidity contract, we will have full typings and auto-completion.
 It saves you a lot of time and help you write better and safer
 code. (I can't emphasize enough how much I love Typescript)
 
-In the snippet below we can see the `beforeEach` function that will run before each test case we write in this file.
+In the snippet below we can see the `beforeEach` function (it is a [hook](https://mochajs.org/#hooks) actually) that 
+will run before each test case we write in this file.
 
 ```ts
 describe("Swappity swap", function () {
