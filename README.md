@@ -325,9 +325,10 @@ dotenv.config();
 ```
 
 I won't go over in details about those, just notice that we use `typechain`, which is a tool that generate automatically
-typescript bindings for Smart contracts. Basically it means that, when we instantiate an object corresponding to a
-Solidity contract, we will have full typings, auto completion. It will save you a lot of time and help you write better
-code.
+typescript bindings for your solidity contracts. Basically it means that, when we instantiate an object corresponding to a
+Solidity contract, we will have full typings and auto-completion. 
+It saves you a lot of time and help you write better and safer
+code. (I can't emphasize enough how much I love Typescript)
 
 In the snippet below we can see the `beforeEach` function that will run before each test case we write in this file.
 
