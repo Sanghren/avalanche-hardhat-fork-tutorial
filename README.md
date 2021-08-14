@@ -66,7 +66,7 @@ If you want to test your Swapper `swap` function you then need to set up in your
 - A Pair contract (PGL) using your 2 previously created ERC20.
 - And all this with the appropriate constructor params, 
 linking all this
-  together. Doable but since one of our most precious resource is time...
+  together. Doable but it'll require some time to set up all this properly.
 
 So, what if I told you that we could avoid all those steps above and jump directly to the step where you test the
 relevant function of your contract.
