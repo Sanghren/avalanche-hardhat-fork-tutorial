@@ -242,7 +242,8 @@ import { Swapper, IWAVAX } from "../typechain";
 
 dotenv.config();
 
-const WAVAX_ADDRESS: string = process.env.WAVAX_ADDRES as string;
+const AVALANCHE_NODE_URL: string = process.env.AVALANCHE_MAINNET_URL as string;
+const WAVAX_ADDRESS: string = process.env.WAVAX_ADDRESS as string;
 const PNG_ADDRESS = "0x60781C2586D68229fde47564546784ab3fACA982"
 
 describe("Swappity swap", function () {
