@@ -7,6 +7,12 @@ mechanism to test your DeFi dApps.
 If you want to jump right into the code, here's a [link](https://github.com/tbrunain/avalanche-hardhat-fork-tutorial)
 to the github repo containing the code of this tutorial.
 
+I would recommend you to clone the repo and start with the following commands:
+- npm i
+- npm test
+
+
+
 ### Avalanche
 
 Avalanche is a platform for creating custom blockchain networks and decentralized applications (dApps). Created by Ava
