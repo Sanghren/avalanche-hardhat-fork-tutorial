@@ -1,20 +1,20 @@
 ## Introduction
 
-In this tutorial we will cover the use of Hardhat, a powerful EVM development tool, together with Avalanche.
-More specifically, we will cover how to configure it to work with Avalanche CChain and how to use the Hardhat `fork`
+In this tutorial we will cover the use of Hardhat, a powerful EVM development tool, together with Avalanche. More
+specifically, we will cover how to configure it to work with Avalanche CChain and how to use the Hardhat `fork`
 mechanism to test your DeFi dApps.
 
-If you want to jump right into the code, here's a [link](https://github.com/tbrunain/avalanche-hardhat-fork-tutorial) 
+If you want to jump right into the code, here's a [link](https://github.com/tbrunain/avalanche-hardhat-fork-tutorial)
 to the github repo containing the code of this tutorial.
 
 ### Avalanche
 
-Avalanche is a platform for creating custom blockchain networks and decentralized applications (dApps). Created by Ava 
-Labs, the Avalanche crypto platform is one of many projects seeking to unseat Ethereum as the blockchain ecosystem's 
+Avalanche is a platform for creating custom blockchain networks and decentralized applications (dApps). Created by Ava
+Labs, the Avalanche crypto platform is one of many projects seeking to unseat Ethereum as the blockchain ecosystem's
 most widely utilized smart contract platform.
 
-It is the fastest smart contracts platform in the blockchain industry, as measured by time-to-finality, and has
-the most validators securing its activity of any proof-of-stake protocol.
+It is the fastest smart contracts platform in the blockchain industry, as measured by time-to-finality, and has the most
+validators securing its activity of any proof-of-stake protocol.
 
 If you want to know more about it, I recommend you those links:
 
@@ -23,19 +23,19 @@ If you want to know more about it, I recommend you those links:
 - https://docs.avax.network/
 - https://github.com/ava-labs/avalanche-smart-contract-quickstart
 
-I've put a [bunch more links](#some-links) at the bottom if you are interested to learn more and join the awesome Avalanche community !
+I've put a [bunch more links](#some-links) at the bottom if you are interested to learn more and join the awesome
+Avalanche community !
 
 ### Hardhat ?
 
-Hardhat is an **Ethereum development environment for professionals**. It was developed for Ethereum, but since
-lots of other blockchains reuse the EVM you can apply Hardhat on those as well ! 
+Hardhat is an **Ethereum development environment for professionals**. It was developed for Ethereum, but since lots of
+other blockchains reuse the EVM you can apply Hardhat on those as well !
 
-In short, it helps you in all
-the important steps of smart contract development. From compiling, deploying, and testing your Solidity code. It has
-even a functionality to let you use 'console.log' in your smart contract's code!
+In short, it helps you in all the important steps of smart contract development. From compiling, deploying, and testing
+your Solidity code. It has even a functionality to let you use 'console.log' in your smart contract's code!
 
-It's not the purpose of this tutorial to go over all those functionalities (maybe in another tutorial, why not :) ), so here is a few links if you want to know
-more about it:
+It's not the purpose of this tutorial to go over all those functionalities (maybe in another tutorial, why not :) ), so
+here is a few links if you want to know more about it:
 
 - https://hardhat.org/getting-started/
 - https://github.com/nomiclabs/hardhat
@@ -46,9 +46,9 @@ So let's get back to the core of this tutorial : Hardhat fork mechanism.
 
 In order to make you realize the importance of this functionality, let me give you an example:
 
-Let's say you have a simple contract `Swapper.sol`. It has a function `swap` that once called with the appropriate 
-parameters will swap for you some Wavax tokens into another ERC20 tokens listed on a DEX. For the sake of this tutorial we will 
-use [Pangolin](https://pangolin.exchange/)
+Let's say you have a simple contract `Swapper.sol`. It has a function `swap` that once called with the appropriate
+parameters will swap for you some Wavax tokens into another ERC20 tokens listed on a DEX. For the sake of this tutorial
+we will use [Pangolin](https://pangolin.exchange/)
 
 The flow of it would be:
 
@@ -66,18 +66,16 @@ If you want to test your Swapper `swap` function you then need to set up in your
 - Pangolin Factory
 - Pangolin router's contract
 - A Pair contract (PGL) using your 2 previously created ERC20.
-- And all this with the appropriate constructor params, 
-linking all this
-  together. Doable but it'll require some time to set up all this properly.
+- And all this with the appropriate constructor params, linking all this together. Doable but it'll require some time to
+  set up all this properly.
 
-So, what if I told you that we could avoid all of this and jump directly to the step where you create tests for your 
+So, what if I told you that we could avoid all of this and jump directly to the step where you create tests for your
 smart contracts.
 
 That's where 'Hardhat fork' is coming in handy.
 
-With this you can simply make a copy of the state of an EVM chain (in our case the CChain) and use
-it directly in your tests ! With all contract,
-addresses balance available for you to use.
+With this you can simply make a copy of the state of an EVM chain (in our case the CChain) and use it directly in your
+tests ! With all contract, addresses balance available for you to use.
 
 So in our case we would not have to deploy all the relevant Pangolin's contract, we could just use the one deployed on
 the mainnet and test your smart contract without much hassle.
@@ -107,7 +105,7 @@ interface IERC20 {
 * I would not recommend you to use this code as it is. It is really simple and stripped of some basic security checks.
 */
 contract Swapper {
-  
+
     address private wavax; // Address of the ERC20 Wrapped Avax
     address private router; // Address of the 'Uniswap-like' router contract
 
@@ -178,9 +176,10 @@ use with your project. As you can see above we have defined two networks for thi
 - `hardhat`, which is also the `defaultNetwork`.
 - `fuji`, which is pointing to fuji testnet.
 
-Note that you can put mutliple network definition, one of it is considered as the 'default' one. Meaning that when you are using
-`npx hardhat test`, it'll use the default network. If you want to run the test on
-another network than the default, you can use this variation of the command :
+Note that you can put mutliple network definition, one of it is considered as the 'default' one. Meaning that when you
+are using
+`npx hardhat test`, it'll use the default network. If you want to run the test on another network than the default, you
+can use this variation of the command :
 `npx hardhat test --network fuji`
 
 Now let's focus on the `hardhat` one .
@@ -188,29 +187,39 @@ Now let's focus on the `hardhat` one .
 ```ts
 hardhat: {
     chainId: 43114,
-    gasPrice: 225000000000,
-    forking: {
+        gasPrice
+:
+    225000000000,
+        forking
+:
+    {
         url: "https://api.avax.network/ext/bc/C/rpc",
-        enabled: true,
-        blockNumber: 2975762
-    },
-},
+            enabled
+    :
+        true,
+            blockNumber
+    :
+        2975762
+    }
+,
+}
+,
 ```
 
-- `chainId` is set with to the mainnet value, as seen 
+- `chainId` is set with to the mainnet value, as seen
   [here](https://docs.avax.network/build/avalanchego-apis/contract-chain-c-chain-api).
-- `gasPrice` is -currently- a fixed value on avalanche and set at 225 nAVAX, stay tuned for the next release and dynamic fees introduction.
-- `forking` is where you configure the parameter of the fork. 
-  - `url` here we see that we point to the Ava labs api endpoint
-    This could be your local node, as long as it is running as full archive node.
-    Hardhat will take care of getting the state of the CChain from this node and start a local development network 
-    on which you'll be able to deploy and test your code.
-  - `blockNumber` Specify at which block Hardhat will create a fork. It is optional so if you don't set it, the default behaviour would be to
-    fork the CChain at the latest known block.
-    Now since you want to be able to run your
-    tests in a deterministic manner, I recommend you to specify a specific block number.
+- `gasPrice` is -currently- a fixed value on avalanche and set at 225 nAVAX, stay tuned for the next release and dynamic
+  fees introduction.
+- `forking` is where you configure the parameter of the fork.
+    - `url` here we see that we point to the Ava labs api endpoint This could be your local node, as long as it is
+      running as full archive node. Hardhat will take care of getting the state of the CChain from this node and start a
+      local development network on which you'll be able to deploy and test your code.
+    - `blockNumber` Specify at which block Hardhat will create a fork. It is optional so if you don't set it, the
+      default behaviour would be to fork the CChain at the latest known block. Now since you want to be able to run your
+      tests in a deterministic manner, I recommend you to specify a specific block number.
 
-If you want to see all configurations options, please go check the [official documentation](https://hardhat.org/hardhat-network/reference/) for this feature.
+If you want to see all configurations options, please go check
+the [official documentation](https://hardhat.org/hardhat-network/reference/) for this feature.
 
 ### Tests overview
 
@@ -219,9 +228,10 @@ Hardhat.
 
 Now let's have a look at the test code.
 
-Testing with Hardhat is fairly simple, lots of things are abstracted away. 
+Testing with Hardhat is fairly simple, lots of things are abstracted away.
 
-Let's first have a first look at the test I've written for our Swapper contract, no worries we will dissect it a bit later.
+Let's first have a first look at the test I've written for our Swapper contract, no worries we will dissect it a bit
+later.
 
 ```ts
 import { ethers } from "hardhat";
@@ -241,6 +251,18 @@ describe("Swappity swap", function () {
     let account1: SignerWithAddress;
 
     beforeEach(async function () {
+        await ethers.provider.send(
+            "hardhat_reset",
+            [
+                {
+                    forking: {
+                        jsonRpcUrl: AVALANCHE_NODE_URL,
+                        blockNumber: 2975762,
+                    },
+                },
+            ],
+        );
+      
         let accounts = await ethers.getSigners()
 
         // @ts-ignore
@@ -289,7 +311,7 @@ describe("Swappity swap", function () {
 
 ```
 
-First we have all the imports. 
+First we have all the imports.
 
 ```ts
 import { ethers } from "hardhat";
@@ -302,11 +324,41 @@ dotenv.config();
 ```
 
 I won't go over in details about those, just notice that we use `typechain`, which is a tool that generate automatically
-typescript bindings for Smart contracts.
-Basically it means that, when we instantiate an object corresponding to a Solidity contract, we will have full typings, auto completion.
-It will save you a lot of time and help you write better code.
+typescript bindings for Smart contracts. Basically it means that, when we instantiate an object corresponding to a
+Solidity contract, we will have full typings, auto completion. It will save you a lot of time and help you write better
+code.
 
 In the snippet below we can see the `beforeEach` function that will run before each test case we write in this file.
+
+```ts
+describe("Swappity swap", function () {
+
+    let swapper: Swapper;
+    let account1: SignerWithAddress;
+
+    beforeEach(async function () {
+        await ethers.provider.send(
+            "hardhat_reset",
+            [
+                {
+                    forking: {
+                        jsonRpcUrl: AVALANCHE_NODE_URL,
+                        blockNumber: 2975762,
+                    },
+                },
+            ],
+        );
+
+        let accounts = await ethers.getSigners()
+
+        account1 = accounts[0]
+
+        // Here we get the factory for our Swapper contrat and we deploy it on the forked network
+        const swapperFactory = await ethers.getContractFactory("Swapper")
+        swapper = await swapperFactory.deploy(process.env.WAVAX_ADDRES as string, "0xE54Ca86531e17Ef3616d22Ca28b0D458b6C89106");
+    });
+...
+ ```
 
 Couple of things to note here :
 
@@ -318,24 +370,6 @@ Couple of things to note here :
   Here we use the factory to actually deploy the contract on the hardhat network, which is a forked version of cchain
   mainnet ! The resulting `swapper` is an object (fully typed thanks to typechain) that represent the `Swapper` conract,
   and on which you will be able to call functions, like the `swap` one !
-
-```ts
-describe("Swappity swap", function () {
-
-    let swapper: Swapper;
-    let account1: SignerWithAddress;
-
-    beforeEach(async function () {
-        let accounts = await ethers.getSigners()
-
-        account1 = accounts[0]
-
-        // Here we get the factory for our Swapper contrat and we deploy it on the forked network
-        const swapperFactory = await ethers.getContractFactory("Swapper")
-        swapper = await swapperFactory.deploy(process.env.WAVAX_ADDRES as string, "0xE54Ca86531e17Ef3616d22Ca28b0D458b6C89106");
-    });
-...
- ```
 
 So here we see the code of a test. We will break it down a bit more and explain each important portion below.
 
@@ -472,8 +506,8 @@ await network.provider.send("evm_mine");
 There is another Hardhat's feature that is quite useful: the `impersonation`. With this feature, you can invoke contract
 call as if you were someone else, like the owner of a contract that is already deployed for example.
 
-In the snippet below we want to call the function `setCoverageAmount` from the elkIlpStrategyV5. Which is only callable by the
-owner of the contract. So not by an address we have the control of. Look at the following snippet.
+In the snippet below we want to call the function `setCoverageAmount` from the elkIlpStrategyV5. Which is only callable
+by the owner of the contract. So not by an address we have the control of. Look at the following snippet.
 
 ```ts
 // We impersonate the 'owner' of the WAVAX-ELK StakingRewardsILP contract
@@ -490,30 +524,36 @@ await hre.network.provider.request({
 });
 ```
 
-You see here that we start with 
+You see here that we start with
 
 ```ts
 await ethers.provider.send('hardhat_impersonateAccount', ['0xcOffeexxxxxxxxxxxxxxxxxxxxxxx']);
 const owner = await ethers.provider.getSigner('0xcOffeexxxxxxxxxxxxxxxxxxxxxxx')
 ```
 
-Meaning that we will `impersonate` the address `0xcOffeexxxxxxxxxxxxxxxxxxxxxxx`which is the `owner` of the 
+Meaning that we will `impersonate` the address `0xcOffeexxxxxxxxxxxxxxxxxxxxxxx`which is the `owner` of the
 `IStakingRewardsILPV2` contract.
 
 We can then use the `admin` signer to interact with the contract, as wee see in the following section:
+
 ```ts
 const stakingcontract = await ethers.getContractAt('IStakingRewardsILPV2', elpStakingRewardAddress, owner);
 ```
 
 ## Conclusion
 
-In this tutorial learned how to set up our Hardhat environment to use a fork of avalanche's Cchain and use it as a base 
-for our tests,
-If you want to learn more about Hardhat, I can't recommend you enough to have a look at their 
+In this tutorial learned how to set up our Hardhat environment to use a fork of avalanche's Cchain and use it as a base
+for our tests, If you want to learn more about Hardhat, I can't recommend you enough to have a look at their
 [official documentation](https://hardhat.org/getting-started/)
 
 # Some Links
 
 If you want to know more about avalanche, here's a bunch of links for you:
 
-[Website](https://avax.network/) | [Whitepapers](https://avalabs.org/whitepapers) | [Twitter](https://twitter.com/avalancheavax) | [Discord](https://chat.avalabs.org/) | [GitHub](https://github.com/ava-labs) | [Documentation](https://docs.avax.network/) | [Forum](https://forum.avax.network/) | [Avalanche-X](https://avalabs.org/avalanche-x) | [Telegram](https://t.me/avalancheavax) | [Facebook](https://facebook.com/avalancheavax) | [LinkedIn](https://linkedin.com/company/avalancheavax) | [Reddit](https://reddit.com/r/avax) | [YouTube](http://www.youtube.com/c/AVALabsOfficial)
+[Website](https://avax.network/) | [Whitepapers](https://avalabs.org/whitepapers)
+| [Twitter](https://twitter.com/avalancheavax) | [Discord](https://chat.avalabs.org/)
+| [GitHub](https://github.com/ava-labs) | [Documentation](https://docs.avax.network/)
+| [Forum](https://forum.avax.network/) | [Avalanche-X](https://avalabs.org/avalanche-x)
+| [Telegram](https://t.me/avalancheavax) | [Facebook](https://facebook.com/avalancheavax)
+| [LinkedIn](https://linkedin.com/company/avalancheavax) | [Reddit](https://reddit.com/r/avax)
+| [YouTube](http://www.youtube.com/c/AVALabsOfficial)
