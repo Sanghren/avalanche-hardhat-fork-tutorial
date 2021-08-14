@@ -40,7 +40,7 @@ more :
 - https://hardhat.org/getting-started/
 - https://github.com/nomiclabs/hardhat
 
-### Hardhat Fork ?
+## What is the 'fork' functionality ?
 
 So let's get back to the core of this tutorial : Hardhat fork mechanism.
 
