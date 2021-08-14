@@ -27,12 +27,12 @@ I've put a [bunch more links](#some-links) at the bottom if you are interested t
 
 ### Hardhat ?
 
-Hardhat is an **Ethereum development environment for professionals.** . It was developed for Ethereum, but since
+Hardhat is an **Ethereum development environment for professionals**. It was developed for Ethereum, but since
 lots of other blockchains reuse the EVM you can apply Hardhat on those as well ! 
 
 In short, it helps you in all
-the important steps of smart contract development. From compiling and deploying your smart contract, to testing and even
-has a functionality to let you use 'console.log' on solidity!
+the important steps of smart contract development. From compiling, deploying, and testing your Solidity code. It has
+even a functionality to let you use 'console.log' in your smart contract's code!
 
 It's not the purpose of this tutorial to go over all those functionalities (maybe in another tutorial, why not :) ), so here is a few links if you want to know
 more :
