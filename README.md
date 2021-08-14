@@ -16,8 +16,6 @@ most widely utilized smart contract platform.
 It is the fastest smart contracts platform in the blockchain industry, as measured by time-to-finality, and has
 the most validators securing its activity of any proof-of-stake protocol.
 
-[comment]: <> (TODO IMPROVE DESCRIPTION HERE)
-
 If you want to know more about it, I recommend you those links:
 
 - https://medium.com/avalancheavax/avalanche-101-an-overview-of-the-internet-of-finance-7cdc5a2bee46
