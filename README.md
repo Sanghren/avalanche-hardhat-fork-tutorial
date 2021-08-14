@@ -172,7 +172,7 @@ use with your project. As you can see above we have defined two network for this
 
 Now let's focus on the `hardhat` one .
 
-```json
+```ts
 hardhat: {
     chainId: 43114,
     gasPrice: 225000000000,
