@@ -1,16 +1,21 @@
 ## Introduction
 
-In this tutorial we will cover the use of hardhat, a powerful EVM development tool, yo test contract deployed on 
+In this tutorial we will cover the use of hardhat, a powerful EVM development tool and how to use it to test contract deployed on 
 Avalanche's C-Chain. More specifically, we will cover how to configure and use the hardhat `fork` mechanism.
 
-If you want to jump right into the code, here's a [link]() to the github repo containing the code of this tutorial.
+If you want to jump right into the code, here's a [link](https://github.com/tbrunain/avalanche-hardhat-fork-tutorial) 
+to the github repo containing the code of this tutorial.
 
-### Avalanche
+## Avalanche
 
-Avalanche is the fastest smart contracts platform in the blockchain industry, as measured by time-to-finality, and has
+Avalanche is a platform for creating custom blockchain networks and decentralized applications (dApps). Created by Ava 
+Labs, the Avalanche crypto platform is one of many projects seeking to unseat Ethereum as the blockchain ecosystem's 
+most widely utilized smart contract platform.
+
+It is the fastest smart contracts platform in the blockchain industry, as measured by time-to-finality, and has
 the most validators securing its activity of any proof-of-stake protocol.
 
-TODO IMPROVE DESCRIPTION HERE
+[comment]: <> (TODO IMPROVE DESCRIPTION HERE)
 
 If you want to know more about it, I recommend you those links:
 
@@ -19,7 +24,9 @@ If you want to know more about it, I recommend you those links:
 - https://docs.avax.network/
 - https://github.com/ava-labs/avalanche-smart-contract-quickstart
 
-### Hardhat ?
+I've put a [bunch more links](#some-links) at the bottom if you are interested to learn more and join the awesome Avalanche community !
+
+## Hardhat ?
 
 TODO IMPROVE DESCRIPTION HERE
 
@@ -31,7 +38,7 @@ In short, it helps you in all
 the important steps of smart contract development. From compiling and deploying your smart contract, to testing and even
 has a functionality to let you use 'console.log' on solidity!
 
-It's not the purpose of this tutorial to go over all those functionalities, so here is a few links if you want to know
+It's not the purpose of this tutorial to go over all those functionalities (maybe in another tutorial, why not :) ), so here is a few links if you want to know
 more :
 
 - https://hardhat.org/getting-started/
@@ -74,7 +81,7 @@ this copy directly in your tests !
 So in our case we would not have to deploy all the relevant Pangolin's contract, we could just use the one deployed on
 the mainnet.
 
-### Step by step explanation
+## Step by step explanation
 
 So first let's get over quickly the solidity code that we will use:
 
@@ -426,9 +433,9 @@ This should produce an output looking like this:
 
 Yeay ! We successfully tested our contract !
 
-### Bonus
+## Bonus
 
-#### Time travel
+### Time travel
 
 Now I still have a couple of things to introduce to you.
 
@@ -447,7 +454,7 @@ await hre.ethers.provider.send('evm_increaseTime', [7 * 24 * 60 * 60]);
 await network.provider.send("evm_mine");
 ```
 
-#### Impersonation
+### Impersonation
 
 There is another hardhat's feature that is quite useful: the `impersonation`. With this feature, you can invoke contract
 call as if you were someone else, like the owner of a contract that is already deployed for example.
@@ -485,12 +492,14 @@ We can then use the `admin` signer to interact with the contract, as wee see in 
 const stakingcontract = await ethers.getContractAt('IStakingRewardsILPV2', elpStakingRewardAddress, owner);
 ```
 
-### Conclusion
+## Conclusion
 
 In this tutorial learned how to set up our hardhat environment to use a fork of avalanche's Cchain and use it as a base 
 for our tests,
 If you want to learn more about hardhat, I can't recommend you enough to have a look at their 
 [official documentation](https://hardhat.org/getting-started/)
+
+# Some Links
 
 If you want to know more about avalanche, here's a bunch of links for you:
 
